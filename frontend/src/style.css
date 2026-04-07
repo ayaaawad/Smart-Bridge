@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations and styles */
+@layer base {
+  body {
+    @apply text-slate-800;
+    min-height: 100vh;
+    font-family: 'Nunito Sans', 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, #e0f2fe 0%, #dbeafe 55%, #bfdbfe 100%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  button {
+    font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 bg-bridge-600 text-white font-semibold rounded-lg hover:bg-bridge-700 transition-colors;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors;
+  }
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(14, 116, 144, 0.12);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(14, 116, 144, 0.55);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 116, 144, 0.8);
+}

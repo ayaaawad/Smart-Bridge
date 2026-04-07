@@ -1,0 +1,25 @@
+node_modules/
+dist/
+data/
+*.db
+*.log
+.env
+.env.local
+.env.*.local
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.env.development.local
+.env.test.local
+.env.production.local
