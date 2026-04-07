@@ -19,6 +19,13 @@ export class AuthService {
       password: 'User123',
       role: 'USER',
     },
+    {
+      id: 3,
+      username: 'guest@smartbridge.com',
+      email: 'guest@smartbridge.com',
+      password: 'Guest123',
+      role: 'USER',
+    },
   ]
 
   constructor(private jwtService: JwtService) {}

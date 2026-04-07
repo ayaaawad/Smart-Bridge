@@ -14,7 +14,7 @@
           <h1 class="mb-2 bg-gradient-to-r from-sky-700 to-cyan-600 bg-clip-text text-4xl font-bold text-transparent">
             🌉 SmartBridge
           </h1>
-          <p class="text-slate-600">User Access</p>
+          <p class="text-slate-600">Friend Access</p>
         </div>
 
         <!-- Form -->
@@ -55,11 +55,20 @@
             <span v-if="loading" class="animate-spin">⏳</span>
             <span v-else>🔑 User Login</span>
           </button>
+
+          <button
+            type="button"
+            :disabled="loading"
+            @click="handleGuestAccess"
+            class="flex w-full items-center justify-center gap-2 rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-3 font-bold text-emerald-700 transition hover:bg-emerald-100 disabled:opacity-60"
+          >
+            👥 Continue as Friend (Guest)
+          </button>
         </form>
 
         <div class="mt-6 rounded-lg border border-sky-200 bg-sky-50 p-4">
           <p class="text-xs text-sky-700">
-            Need admin access? Use the dedicated Admin Login page.
+            Owner admin page is private and separated from friend access.
           </p>
         </div>
       </div>
@@ -105,6 +114,21 @@ const handleLogin = async () => {
   } catch (err) {
     error.value = 'Invalid credentials'
     console.error('Login failed:', err)
+  } finally {
+    loading.value = false
+  }
+}
+
+const handleGuestAccess = async () => {
+  error.value = ''
+  loading.value = true
+
+  try {
+    await authStore.login('guest@smartbridge.com', 'Guest123')
+    router.push({ name: 'dashboard' })
+  } catch (err) {
+    error.value = 'Guest access is unavailable right now.'
+    console.error('Guest login failed:', err)
   } finally {
     loading.value = false
   }

@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { useInventoryStore } from './inventory'
 
-const API_URL = 'http://localhost:3000'
+const API_URL = import.meta.env.VITE_API_URL || '/api'
 
 export const useRecipesStore = defineStore('recipes', () => {
   const recipes = ref([])

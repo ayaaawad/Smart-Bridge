@@ -16,13 +16,6 @@
             ⚙️ Admin Panel
           </button>
           <button
-            v-else
-            @click="router.push({ name: 'admin-login' })"
-            class="rounded-lg border border-amber-300 bg-amber-50 px-4 py-2 text-amber-700 transition hover:bg-amber-100"
-          >
-            🔐 Admin Login
-          </button>
-          <button
             @click="handleLogout"
             class="rounded-lg border border-red-300 bg-red-50 px-4 py-2 text-red-600 transition hover:bg-red-100"
           >

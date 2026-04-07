@@ -12,14 +12,18 @@ const routes = [
     }
   },
   {
-    path: '/admin-login',
-    name: 'admin-login',
+    path: '/owner-admin-login',
+    name: 'owner-admin-login',
     component: () => import('./views/AdminLogin.vue'),
     meta: {
       requiresAuth: false,
       requiresAdmin: false,
       adminLoginOnly: true,
     }
+  },
+  {
+    path: '/admin-login',
+    redirect: { name: 'owner-admin-login' },
   },
   {
     path: '/',
@@ -66,10 +70,14 @@ router.beforeEach(async (to, from, next) => {
     return next({ name: 'admin' })
   }
 
+  if (adminLoginOnly && authStore.isAuthenticated && !authStore.isAdmin) {
+    return next({ name: 'dashboard' })
+  }
+
   // Require explicit admin authentication for admin routes.
   if (requiresAdmin) {
     if (!authStore.isAuthenticated || !authStore.isAdmin) {
-      return next({ name: 'admin-login', query: { redirect: to.path } })
+      return next({ name: 'owner-admin-login', query: { redirect: to.path } })
     }
   }
 
