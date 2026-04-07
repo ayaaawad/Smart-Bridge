@@ -75,7 +75,7 @@ import IngredientPicker from '../components/IngredientPicker.vue'
 const inventoryStore = useInventoryStore()
 const recipesStore = useRecipesStore()
 
-const isBridgeOpen = ref(false)
+const isBridgeOpen = ref(true)
 const ingredientPicker = ref(null)
 
 const toggleBridge = () => {
